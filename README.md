@@ -1,2 +1,2 @@
 # captainFallacy
-prototype for ReactJS
+prototype using ReactJS
