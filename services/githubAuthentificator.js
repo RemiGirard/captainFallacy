@@ -1,6 +1,6 @@
 const passport = require('passport')
 const mongoose = require('mongoose')
-const GoogleStrategy = require('passport-google-oauth20').Strategy
+const GitHubStrategy = require('passport-github2').Strategy
 const keys = require('../config/keys')
 const User = mongoose.model('users')
 
@@ -14,19 +14,19 @@ passport.deserializeUser((id, done) => {
     })
 })
 
-passport.use(new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+passport.use(new GitHubStrategy({
+    clientID: keys.githubClientID,
+    clientSecret: keys.githubClientSecret,
+    callbackURL: 'http://localhost:3000/auth/github/callback'
     },
     async (accessToken, refreshToken, profile, callback) => {
-        let currentUser = await User.findOne({ googleId: profile.id }, function(err, user) {
+        let currentUser = await User.findOne({ githubId: profile.id }, function(err, user) {
             return callback(err, user)
         })
         if(currentUser){
             return callback(null, currentUser)
         } else {
-            const user = await new User({googleId: profile.id, name: profile.displayName}).save()
+            const user = await new User({githubId: profile.id, name: profile.username}).save()
             callback(null, user)
         }
     }
