@@ -1,13 +1,13 @@
-const mongoose = require('mongoose')
-const {Schema} = mongoose
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
 const videoSchema = new Schema({
     name: String,
     date: Date,
-    link: String,
+    youtubeId: String,
+    thumbmail: String,
     integratedVideo: String,
     authorId: String
-})
+});
 
-mongoose.model('videos', videoSchema)
-
+mongoose.model('videos', videoSchema);

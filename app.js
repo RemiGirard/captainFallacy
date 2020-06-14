@@ -13,8 +13,8 @@ require('./models/Comment')
 require('./models/Video')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var authenticationRouter = require('./routes/authentification');
+var apiRouter = require('./routes/api');
 
 var app = express()
 
@@ -38,6 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authenticationRouter);
-app.use('/users', usersRouter);
+app.use('/api', passport.authenticate(['github', 'google']), apiRouter);
 
 module.exports = app;

@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+require('../services/userSerializer');
 require('../services/googleAuthentificator');
 require('../services/githubAuthentificator');
+
 
 router.get('/google',
     passport.authenticate('google', {scope: ['profile']})
@@ -25,16 +27,6 @@ router.get('/github/callback',
         res.redirect('/')
     }
 );
-
-router.get('/adduser', async (req, res) => {
-    const {email, name, password} = req.body;
-
-    const newUser = new User({
-        email,
-        name,
-
-    })
-});
 
 router.get('/logout', (req, res) => {
     req.logout();
