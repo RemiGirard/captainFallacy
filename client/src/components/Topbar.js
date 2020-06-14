@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import DrawerToggleButton from './SideDrawer/DrawerToggleButton';
 
@@ -11,10 +12,10 @@ class Topbar extends Component {
                 <div>
                     <DrawerToggleButton click={this.props.drawerClickHandler}/>
                 </div>
-                <a className="navbar-brand toolbar__logo" href="/">
+                <Link className="navbar-brand toolbar__logo" to="/">
                     <img src="cf-logo-200.png" width="50" height="50" alt="logo"/>
                     <span>Captain Fallacy</span>
-                </a>
+                </Link>
             </nav>
         )
     }

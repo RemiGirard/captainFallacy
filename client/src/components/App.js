@@ -10,8 +10,8 @@ import Home from "./Home";
 import Login from "./Login";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import Backdrop from "./Backdrop/Backdrop";
+import AddVideoForm from "./Videos/AddVideoForm";
 const VideoList = () => <h2>VideoList</h2>;
-const Video = () => <h2>Video</h2>;
 
 
 class App extends Component {
@@ -42,12 +42,13 @@ class App extends Component {
                 <BrowserRouter>
                     <div style={{height: '100%'}}>
                         <Topbar drawerClickHandler={this.drawerToggleClickHandler} />
-                        <SideDrawer show={this.state.sideDrawerOpen}/>
+                        <SideDrawer click={this.backdropClickHandler} show={this.state.sideDrawerOpen}/>
                         {backdrop}
                         <div style={{height: '100%'}}>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/videos" component={VideoList}/>
                             <Route exact path="/login" component={Login}></Route>
+                            <Route exact path="/videos/add" component={AddVideoForm}></Route>
                         </div>
                     </div>
                 </BrowserRouter>

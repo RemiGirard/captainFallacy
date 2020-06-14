@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const videoSchema = new Schema({
-    name: String,
+    title: String,
+    channelTitle: String,
     date: Date,
     youtubeId: String,
-    thumbmail: String,
+    thumbnails: Object,
     integratedVideo: String,
     authorId: String
 });

@@ -2,16 +2,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-let passport = require('passport')
-let mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const cookieSession = require('cookie-session')
-const keys = require('./config/keys')
-mongoose.connect('mongodb://localhost:27017/captainfallacy', { useNewUrlParser: true })
-require('./models/User')
-require('./models/Comment')
-require('./models/Video')
+let passport = require('passport');
+let mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
+const keys = require('./config/keys');
+mongoose.connect('mongodb://localhost:27017/captainfallacy', { useNewUrlParser: true });
+require('./models/User');
+require('./models/Comment');
+require('./models/Video');
 
+let requireLogin = require('./middlewares/requireLogin');
 var indexRouter = require('./routes/index');
 var authenticationRouter = require('./routes/authentification');
 var apiRouter = require('./routes/api');
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authenticationRouter);
-app.use('/api', passport.authenticate(['github', 'google']), apiRouter);
+app.use('/api', apiRouter);
+// app.use('/api', requireLogin, apiRouter);
 
 module.exports = app;

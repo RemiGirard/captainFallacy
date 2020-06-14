@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './Home.css';
 
 class Home extends Component {
@@ -12,9 +12,9 @@ class Home extends Component {
                 return <Redirect to={{pathname: "/login"}} />;
             default:
                 return (
-                    <div className="welcome-message" style={{maxWidth: 400}}>
+                    <div className="center-flex" style={{maxWidth: 400}}>
                         <h2>Welcome {this.props.auth.name||"user"}</h2>
-                        <a className="btn btn-info" href="/videos">Start to fight fallacious arguments</a>
+                        <Link className="btn btn-info" to="/videos">Start to fight fallacious arguments</Link>
                     </div>
                 );
         }
