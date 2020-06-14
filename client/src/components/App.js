@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { BrowserRouter, Route } from 'react-router-dom';
+import {BrowserRouter, Redirect, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 // import {fetchUser} from "../actions";
@@ -11,7 +11,8 @@ import Login from "./Login";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import Backdrop from "./Backdrop/Backdrop";
 import AddVideoForm from "./Videos/AddVideoForm";
-const VideoList = () => <h2>VideoList</h2>;
+import ListVideos from "./Videos/ListVideos";
+import VideoPage from "./Videos/VideoPage";
 
 
 class App extends Component {
@@ -32,6 +33,23 @@ class App extends Component {
         this.props.fetchUser();
     }
 
+    renderContent(){
+        switch (this.props.auth) {
+            case null:
+                return 'loading';
+            case false:
+                return <Redirect to={{pathname: "/login"}}/>;
+            default:
+                return ([
+                        <Route exact path="/" component={Home}/>,
+                        <Route exact path="/videos" component={ListVideos}/>,
+                        <Route exact path="/videos/add" component={AddVideoForm}/>,
+                        <Route exact path="/video/:youtubeId" component={VideoPage}/>
+                    ]
+                )
+        }
+    }
+
     render() {
         let backdrop;
         if(this.state.sideDrawerOpen){
@@ -45,10 +63,8 @@ class App extends Component {
                         <SideDrawer click={this.backdropClickHandler} show={this.state.sideDrawerOpen}/>
                         {backdrop}
                         <div style={{height: '100%'}}>
-                            <Route exact path="/" component={Home}/>
-                            <Route exact path="/videos" component={VideoList}/>
-                            <Route exact path="/login" component={Login}></Route>
-                            <Route exact path="/videos/add" component={AddVideoForm}></Route>
+                            <Route exact path="/login" component={Login}/>
+                            {this.renderContent()}
                         </div>
                     </div>
                 </BrowserRouter>
@@ -57,4 +73,8 @@ class App extends Component {
     }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps({auth}) {
+    return { auth };
+}
+
+export default connect(mapStateToProps, actions)(App);

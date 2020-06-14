@@ -11,8 +11,8 @@ const sideDrawer = props => {
     return (
     <nav className={drawerClasses}>
         <ul>
-            <li><Link to="/videos/add" onClick={props.click}>Add a video</Link></li>
-            <li><a href="/auth/logout">Logout</a></li>
+            <li key={"firstLink"}><Link to="/videos/add" onClick={props.click}>Add a video</Link></li>
+            <li key={"secondLink"}><a href="/auth/logout">Logout</a></li>
         </ul>
     </nav>
     )

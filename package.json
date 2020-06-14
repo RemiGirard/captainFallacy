@@ -24,6 +24,7 @@
     "passport-github2": "^0.1.12",
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
+    "react-media": "^1.10.0",
     "react-redux": "^7.2.0",
     "react-sidebar": "^3.0.2",
     "redux": "^4.0.5"

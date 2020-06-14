@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
-let addVideo = require('../services/videosHandler');
+let {addVideo, listVideos} = require('../services/videosHandler');
 
-router.get('/', function(req, res, next){
-    res.send('videosAPI');
+router.get('/', async function(req, res, next){
+    let videoList = await listVideos();
+    res.send(videoList);
 });
 
 router.post('/add', async function(req, res, next){

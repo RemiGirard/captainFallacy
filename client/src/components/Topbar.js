@@ -12,8 +12,8 @@ class Topbar extends Component {
                 <div>
                     <DrawerToggleButton click={this.props.drawerClickHandler}/>
                 </div>
-                <Link className="navbar-brand toolbar__logo" to="/">
-                    <img src="cf-logo-200.png" width="50" height="50" alt="logo"/>
+                <Link className="navbar-brand toolbar__logo" to="/videos">
+                    <img src="./cf-logo-200.png" width="50" height="50" alt="logo"/>
                     <span>Captain Fallacy</span>
                 </Link>
             </nav>
