@@ -9,15 +9,17 @@ import './Tobbar.css';
 class Topbar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div>
+            <div className="" style={{display: "flex", alignItems:"center",justifyContent:"space-between"}}>
+                <div style={{marginTop:"15px", marginLeft:"15px"}}>
                     <DrawerToggleButton click={this.props.drawerClickHandler}/>
                 </div>
-                <Link className="navbar-brand toolbar__logo" to="/videos">
+                <Link style={{display:"flex", textColor:"black", alignItems:"center", marginTop:"10px", marginRight:"10px"}} className="brand-logo" to="/videos">
                     <img src={logo} width="50" height="50" alt="logo"/>
-                    <span>Captain Fallacy</span>
+                    <span style={{color: "#054", fontFamily: "Heebo"}}>Captain Fallacy</span>
                 </Link>
-            </nav>
+                <div/>
+
+            </div>
         )
     }
 }

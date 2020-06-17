@@ -16,8 +16,9 @@ const Quotes = (props) => {
 
     const quoteDisplay = () => {
         return (
-            <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection:"column"}}>
                 <p>{props.quoteContent}</p>
+                <p>{props.startQuote} - {props.endQuote}</p>
             </div>
         )
     }

@@ -10,7 +10,7 @@ const listQuotes = async (youtubeId) => {
         return [403, 'server error while trying to find the video associated'];
     }
     let quotes = await Quote
-        .find({videoId: currentVideo._id}, 'start end content -_id', {sort: 'start'}, function (err, result) {
+        .find({videoId: currentVideo._id}, 'start end content', {sort: 'start'}, function (err, result) {
             return result;
         });
     return [201, quotes];

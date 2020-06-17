@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost:27017/captainfallacy', { useNewUrlParser: 
 require('./models/User');
 require('./models/Quote');
 require('./models/Video');
+require('./models/Fallacy');
 
 let requireLogin = require('./middlewares/requireLogin');
 var indexRouter = require('./routes/index');

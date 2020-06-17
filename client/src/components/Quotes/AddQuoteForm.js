@@ -31,7 +31,8 @@ const AddQuoteForm = (props) => {
         axios.post('/api/videos/quotes/add', {quote})
             .then( (response) => {
                 if(response.status === 201){
-                    // update display
+                    props.setAddNewQuote(false);
+                    props.setCurrentQuoteIndex(props.currentQuoteIndex);
                 }
             });
     }
