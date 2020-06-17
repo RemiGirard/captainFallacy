@@ -14,12 +14,13 @@ const addVideo = async (youtubeId, authorId) => {
         return [403, 'already exist'];
     } else {
         const {title, channelTitle, thumbnails} = await youtubeDetailsGetter(youtubeId);
-        const video = await new Video({
+        await new Video({
             authorId,
             youtubeId,
             title,
             channelTitle,
-            thumbnails
+            thumbnails,
+            date: new Date()
         }).save();
         return [201, 'successfully added: '+title ];
     }

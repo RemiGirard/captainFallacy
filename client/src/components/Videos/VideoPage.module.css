@@ -1,0 +1,9 @@
+.videocontainer {
+    position: relative;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

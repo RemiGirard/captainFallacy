@@ -9,7 +9,7 @@ const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 mongoose.connect('mongodb://localhost:27017/captainfallacy', { useNewUrlParser: true });
 require('./models/User');
-require('./models/Comment');
+require('./models/Quote');
 require('./models/Video');
 
 let requireLogin = require('./middlewares/requireLogin');
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authenticationRouter);
-app.use('/api', apiRouter);
+app.use('/api', requireLogin, apiRouter);
 // app.use('/api', requireLogin, apiRouter);
 
 module.exports = app;

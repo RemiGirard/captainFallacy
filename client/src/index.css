@@ -11,3 +11,9 @@ html{
     align-items: center;
     flex-direction: column;
 }
+
+@font-face {
+    font-family: 'Heebo';
+    src: local('Heebo'), url(./fonts/Heebo/static/Heebo-ExtraBold.ttf) format('truetype');
+}
+
