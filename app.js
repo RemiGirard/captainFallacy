@@ -7,7 +7,7 @@ let mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
-mongoose.connect('mongodb://localhost:27017/captainfallacy', { useNewUrlParser: true });
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 require('./models/User');
 require('./models/Quote');
 require('./models/Video');

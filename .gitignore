@@ -1,3 +1,4 @@
-config/keys.js
+config/dev.js
+config/prod.js
 node_modules
 .idea
