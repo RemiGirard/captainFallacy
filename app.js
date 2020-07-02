@@ -7,7 +7,7 @@ let mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://dbUser:9OmFG0ki85rzpJFd@cluster0.wybcp.mongodb.net/prod?retryWrites=true&w=majority', { useNewUrlParser: true });
 require('./models/User');
 require('./models/Quote');
 require('./models/Video');
