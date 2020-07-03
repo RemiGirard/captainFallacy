@@ -14,9 +14,10 @@ require('./models/Video');
 require('./models/Fallacy');
 
 let requireLogin = require('./middlewares/requireLogin');
-var indexRouter = require('./routes/index');
+//var indexRouter = require('./routes/index');
 var authenticationRouter = require('./routes/authentification');
 var apiRouter = require('./routes/api');
+var clientRouter = require('./routes/client.js');
 
 var app = express()
 
@@ -45,11 +46,9 @@ app.use('/api', requireLogin, apiRouter);
 
 if(true){
     app.use(express.static('client/build'));
-    const path = require('path');
+
     console.log('client building');
-    app.get('*', (req,res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
+    app.use('/', clientRouter);
 }
 
 module.exports = app;
