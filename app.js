@@ -43,9 +43,10 @@ app.use('/auth', authenticationRouter);
 app.use('/api', requireLogin, apiRouter);
 // app.use('/api', requireLogin, apiRouter);
 
-if(process.env.NODE_ENV === 'production'){
+if(true){
     app.use(express.static('client/build'));
     const path = require('path');
+    console.log('client building');
     app.get('*', (req,res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
