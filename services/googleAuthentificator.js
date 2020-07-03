@@ -17,7 +17,7 @@ const User = mongoose.model('users');
 passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: 'https://captain-fallacy.herokuapp.com/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, callback) => {
         let currentUser = await User.findOne({ googleId: profile.id }, function(err, user) {

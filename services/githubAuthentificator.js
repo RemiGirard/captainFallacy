@@ -7,7 +7,7 @@ const User = mongoose.model('users');
 passport.use(new GitHubStrategy({
     clientID: keys.githubClientID,
     clientSecret: keys.githubClientSecret,
-    callbackURL: 'http://localhost:3000/auth/github/callback'
+    callbackURL: 'https://captain-fallacy.herokuapp.com/auth/github/callback'
     },
     async (accessToken, refreshToken, profile, callback) => {
         let currentUser = await User.findOne({ githubId: profile.id }, function(err, user) {
